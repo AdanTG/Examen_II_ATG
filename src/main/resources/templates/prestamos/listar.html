@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Préstamos</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: white;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .btn {
+            padding: 4px 8px;
+            text-decoration: none;
+            border: 1px solid black;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Préstamos de Libros</h1>
+    <a class="btn" th:href="@{/prestamos/nuevo}">Nuevo Préstamo</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Libro</th>
+                <th>Usuario</th>
+                <th>Préstamo</th>
+                <th>Devolución</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${listaPrestamos}">
+                <td th:text="${p.id}">1</td>
+                <td th:text="${p.idLibro}">101</td>
+                <td th:text="${p.nombreUsuario}">Juan</td>
+                <td th:text="${p.fechaPrestamo}">2025-01-01</td>
+                <td th:text="${p.fechaDevolucion}">2025-01-15</td>
+                <td>
+                    <a class="btn" th:href="@{/prestamos/editar/{id}(id=${p.id})}">Editar</a>
+                    <a class="btn" th:href="@{/prestamos/eliminar/{id}(id=${p.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

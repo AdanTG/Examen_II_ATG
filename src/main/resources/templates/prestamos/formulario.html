@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Préstamo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input {
+            margin: 5px 0;
+        }
+        input[type='text'],
+        input[type='number'],
+        input[type='date'] {
+            padding: 5px;
+            font-size: 14px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid black;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Formulario de Préstamo</h1>
+    <form th:action="@{/prestamos/guardar}" th:object="${prestamo}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="idLibro">ID del Libro:</label>
+        <input type="number" id="idLibro" th:field="*{idLibro}" required />
+
+        <label for="nombreUsuario">Nombre del Usuario:</label>
+        <input type="text" id="nombreUsuario" th:field="*{nombreUsuario}" required />
+
+        <label for="fechaPrestamo">Fecha de Préstamo:</label>
+        <input type="date" id="fechaPrestamo" th:field="*{fechaPrestamo}" required />
+
+        <label for="fechaDevolucion">Fecha de Devolución:</label>
+        <input type="date" id="fechaDevolucion" th:field="*{fechaDevolucion}" required />
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+</body>
+</html>
