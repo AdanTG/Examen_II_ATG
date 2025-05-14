@@ -37,6 +37,10 @@ public class HomeController {
         model.addAttribute("prestamo", servicio.obtenerPorId(id));
         return "prestamos/formulario";
     }
+    @GetMapping("/")
+    public String redirigir() {
+        return "redirect:/prestamos";
+    }
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
